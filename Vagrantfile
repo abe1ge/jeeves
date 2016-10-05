@@ -126,7 +126,7 @@
 		agent.vm.box = "chad-thompson/ubuntu-trusty64-gui"
 	
 		# Setting up the network options
-		agent.vm.network :public_network, :public_network=> "wlan0",ip:"192.168.1.32"
+		agent.vm.network :public_network, :public_network=> "wlan0",ip:"192.168.1.72"
 		
 		# Calling the provision bash file
 		agent.vm.provision:shell,path:"bootstrap_agent.sh"

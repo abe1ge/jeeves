@@ -2,3 +2,8 @@ shared/java.tar.gz
 shared/jenkins_2.1_all.deb
 shared/jira.bin
 shared/maven.tar.gz
+shared/atlassian-bamboo-5.13.2.tar.gz
+shared/mysql-server_5.7.15-1ubuntu14.04_amd64.deb-bundle.tar
+shared/nexus-3.0.2-02-unix.tar.gz
+shared/zabbix_appliance_3.2.0_x86_64.iso
+.vagrant/
