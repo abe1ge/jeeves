@@ -34,6 +34,8 @@
 		end
 	end
     
+	
+	
 	config.vm.define "agent1" do |agent|
 	
 	 	# Configuring Hostname

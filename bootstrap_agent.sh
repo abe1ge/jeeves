@@ -9,3 +9,5 @@ sudo ufw disable
 
 sudo apt-get -y install puppet puppetmaster
 
+
+
