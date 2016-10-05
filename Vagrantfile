@@ -5,7 +5,7 @@
  Vagrant.configure("2") do |config|
 
    # Setting up the Shared folder
-  config.vm.synced_folder "Shared", "/tmp/shared" 
+  config.vm.synced_folder "shared", "/tmp/shared" 
   
 	config.vm.define "master" do |master|
   
