@@ -6,7 +6,7 @@ class bamboo {
 
 	file { '/opt/atlassian-bamboo-5.13.2.tar.gz':
 		ensure => 'present',
-		source => 'puppet:///modules/bamboo/atlassian-bamboo-5.13.2.tar.gz',
+		source => '/tmp/shared/atlassian-bamboo-5.13.2.tar.gz',
 	}
 
 	exec { 'extract bamboo files':
