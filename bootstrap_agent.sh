@@ -25,11 +25,6 @@ sed -i "3i$ip	$fqdn	puppet" /etc/hosts
 
 sed -i "2iserver=$mfqdn" /etc/puppet/puppet.conf
 
-sshpass -p "vagrant" ssh -o StrictHostKeyChecking=no vagrant@192.168.1.74 << EOF
-sudo touch /etc/puppet/manifests/site.pp
-exit 0
-EOF
-
 sudo puppet agent --test --server="$mfqdn"
 
 sshpass -p "vagrant" ssh -o StrictHostKeyChecking=no vagrant@192.168.1.74 << EOF
