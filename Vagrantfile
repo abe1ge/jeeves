@@ -16,7 +16,7 @@
 		master.vm.box = "chad-thompson/ubuntu-trusty64-gui"
 	
 		# Setting up the network options
-		master.vm.network :public_network, :public_network=> "wlan0",ip:"192.168.1.33"
+		master.vm.network :public_network, :public_network=> "wlan0",ip:"192.168.1.73"
 		
 		# Calling the provision bash file
 		master.vm.provision:shell,path:"bootstrap_master.sh"
@@ -137,6 +137,60 @@
 			# Showing the vm GUI and setting its name
 			agentVM.gui = true
 			agentVM.name="JeevesAgent4"
+   
+			# Setting the amount of RAM the VM has access to
+			agentVM.memory = "4096"
+			agentVM.cpus = "2"
+		end
+	end
+
+	config.vm.define "mastertest" do |master|
+  
+ 		# Configuring Hostname
+		master.vm.hostname= "JeevesMasterTest.qac.local"
+  
+		# Selecting the box to use
+		master.vm.box = "chad-thompson/ubuntu-trusty64-gui"
+	
+		# Setting up the network options
+		master.vm.network :public_network, :public_network=> "wlan0",ip:"192.168.1.74"
+		
+		# Calling the provision bash file
+		master.vm.provision:shell,path:"bootstrap_master.sh"
+		
+		# Configuring vm provider options
+		master.vm.provider "virtualbox" do |masterVM|
+  
+			# Showing the vm GUI and setting its name
+			masterVM.gui = true
+			masterVM.name="JeevesMasterTestVM"
+   
+			# Setting the amount of RAM the VM has access to
+			masterVM.memory = "4096"
+			masterVM.cpus = "2"
+		end
+	end
+	
+	config.vm.define "agenttest" do |agent|
+	
+	 	# Configuring Hostname
+		agent.vm.hostname= "JeevesAgentTest.qac.local"
+  
+		# Selecting the box to use
+		agent.vm.box = "chad-thompson/ubuntu-trusty64-gui"
+	
+		# Setting up the network options
+		agent.vm.network :public_network, :public_network=> "wlan0",ip:"192.168.1.75"
+		
+		# Calling the provision bash file
+		agent.vm.provision:shell,path:"bootstrap_agent.sh"
+		
+		# Configuring vm provider options
+		agent.vm.provider "virtualbox" do |agentVM|
+  
+			# Showing the vm GUI and setting its name
+			agentVM.gui = true
+			agentVM.name="JeevesAgentTest"
    
 			# Setting the amount of RAM the VM has access to
 			agentVM.memory = "4096"
