@@ -24,7 +24,7 @@ class jenkins {
 		path => ['/bin/','/usr/bin/','/sbin/','/user/bin/'],
 		cwd => '/opt/',
 		refreshonly => 'true',
-		timeout => '1800',
+		timeout => '600',
 		notify => Exec['aptgetjenk'],
 		require => Exec['unzipjenkins'],
 	}	
