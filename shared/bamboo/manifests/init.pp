@@ -4,7 +4,7 @@ class bamboo {
 	require maven
 	
 	Exec {
-		path => ["/usr/bin", "/bin", "/usr/sbin"],
+		path => ["/usr/bin", "/bin", "/usr/sbin","/sbin"],
 	}
 
 	file { '/opt/atlassian-bamboo-5.13.2.tar.gz':
@@ -19,7 +19,7 @@ class bamboo {
 	}
 
 	exec { 'make bamboo home directory':
-		command => 'mkdir -p /home/vagrant/bamboo/bamboo-home',
+		command => 'sudo mkdir -p /opt/bamboo/bamboo-home',
 	}
 
 	exec { 'change permissions for bamboo-init':
@@ -29,7 +29,8 @@ class bamboo {
 	}
 
 	exec { 'edit bamboo-init.properties':
-		command => 'sudo echo "bamboo.home=/home/vagrant/bamboo/bamboo-home" >> bamboo-init.properties',
+		command => 'sudo echo "bamboo.home=/opt/bamboo/bamboo-home" >> bamboo-init.properties',
+		cwd => '/opt/atlassian-bamboo-5.13.2/atlassian-bamboo/WEB-INF/classes',
 		require => Exec['change permissions for bamboo-init'],
 	}
 
