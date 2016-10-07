@@ -1,27 +1,27 @@
 class jira::install {
 
-	file { '/home/vagrant/jira.bin':
+	file { '/opt/jira.bin':
 		ensure => present,
 		source => '/tmp/shared/jira.bin',
 	}
 
-	file { '/home/vagrant/jira_setup.sh':
+	file { '/opt/jira_setup.sh':
 		ensure => present,
-		source => '/tmp/shared/jira_setup.sh',
+		source => '/tmp/shared/jira/files/jira_setup.sh',
 		before => Exec['unzip_jira'],
 	}
 
 	exec { 'unzip_jira':
 		unless => 'grep -rnw "/opt/atlassian/jira" -e "install"',
 		path => ['/bin','/usr/bin'],
-		command => 'sudo bash /home/vagrant/jira_setup.sh',
+		command => 'sudo bash /opt/jira_setup.sh',
 		require => Exec['make_executable'],
 	}
 	
 	exec { 'make_executable':
-		path => '/bin',
-		command => 'chmod a+x /home/vagrant/jira.bin',
-		require => File['/home/vagrant/jira.bin'],
+		path => ['/bin','/usr/bin'],
+		command => 'sudo chmod a+x /opt/jira.bin',
+		require => File['/opt/jira.bin'],
 	}
 	
 }
