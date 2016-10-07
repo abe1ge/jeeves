@@ -39,7 +39,7 @@ echo "Hosts file updated"
 
 sudo puppet agent --test --server="$mfqdn"
 
-sshpass -p "vagrant" ssh -o StrictHostKeyChecking=no vagrant@192.168.1.74 << EOF
+sshpass -p "vagrant" ssh -o StrictHostKeyChecking=no vagrant@"$mip" << EOF
 sudo puppet cert list
 sudo puppet cert sign --all
 exit 0
