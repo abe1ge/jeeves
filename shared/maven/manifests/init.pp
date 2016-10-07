@@ -6,7 +6,7 @@ class maven {
 	
 	file { '/opt/maven.tar.gz':
 		ensure => 'present',
-		source => 'puppet:///modules/maven/maven.tar.gz',
+		source => 'tmp/shared/maven.tar.gz,
 	}
 
 	exec { 'extract maven':
