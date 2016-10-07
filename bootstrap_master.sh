@@ -37,6 +37,11 @@ sudo cp -r /tmp/shared/maven /usr/share/puppet/modules
 echo "Modules Copied"
 
 sudo echo "include javainstall" >> /etc/puppet/manifests/site.pp
-#sudo echo "include maven" >> /etc/puppet/manifests/site.pp
+sudo echo "include maven" >> /etc/puppet/manifests/site.pp
+sudo echo "include jenkins" >> /etc/puppet/manifests/site.pp
+sudo echo "include jira" >> /etc/puppet/manifests/site.pp
+sudo echo "include git" >> /etc/puppet/manifests/site.pp
+sudo echo "include bamboo" >> /etc/puppet/manifests/site.pp
+
 
 echo "Site.pp updated"

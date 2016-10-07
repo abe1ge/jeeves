@@ -5,7 +5,7 @@ class git {
 	}  	
 
 	exec { 'install':
-	cwd => '/tmp',
+	cwd => '/opt',
 	command => 'sudo apt-get install git -y'
 	}
 }
