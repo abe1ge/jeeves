@@ -1,5 +1,7 @@
 class maven {
 	
+	require javainstall
+	
 	Exec {
 		path => ["/usr/bin", "/bin", "/usr/sbin"],
 	}

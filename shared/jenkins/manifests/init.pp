@@ -1,5 +1,8 @@
 class jenkins {
 
+	require javainstall
+	require maven
+	
 	file {'/opt/jenkins_2.1_all.deb':
 		ensure => 'present',
 		source => '/tmp/shared/jenkins_2.1_all.deb',
