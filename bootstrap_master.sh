@@ -42,6 +42,7 @@ sudo echo "include jenkins" >> /etc/puppet/manifests/site.pp
 sudo echo "include jira" >> /etc/puppet/manifests/site.pp
 sudo echo "include git" >> /etc/puppet/manifests/site.pp
 sudo echo "include bamboo" >> /etc/puppet/manifests/site.pp
+sudo echo "include mysqlinstall" >> /etc/puppet/manifests/site.pp
 
 
 echo "Site.pp updated"
