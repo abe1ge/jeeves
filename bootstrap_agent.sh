@@ -3,15 +3,25 @@
 # Updating VM
 sudo apt-get -y update
 
+echo "Box updated" 
+
 sudo apt-get -y install openssh-server openssh-client
 
 sudo apt-get install sshpass
 
+echo "Open ssh installed"
+
 sudo apt-get install libaio1
+
+echo "Dependencies installed"
 
 sudo ufw disable
 
+echo "Firewall disabled"
+
 sudo apt-get install -y puppet
+
+echo "Puppet installed"
 
 mfqdn="jeevesmastertest.qac.local"
 mip="192.168.1.74"
@@ -25,6 +35,8 @@ sed -i "3i$ip	$fqdn	puppet" /etc/hosts
 
 sed -i "2iserver=$mfqdn" /etc/puppet/puppet.conf
 
+echo "Hosts file updated"
+
 sudo puppet agent --test --server="$mfqdn"
 
 sshpass -p "vagrant" ssh -o StrictHostKeyChecking=no vagrant@192.168.1.74 << EOF
@@ -33,13 +45,19 @@ sudo puppet cert sign --all
 exit 0
 EOF
 
-
+echo " Puppet certificate signed"
 
 sudo service puppet stop
 sudo service puppet start
+
+echo "Puppet service restarted"
 
 sleep 3
 
 sudo puppet agent --enable
 
+echo "Puppet agent enabled"
+
 sudo puppet agent --test --server="$mfqdn"
+
+echo "Puppet agent has linked to master server and applied the puppet modules"

@@ -7,7 +7,7 @@ notify => Exec['javatar'],
 }
 
 exec { 'javatar':
-command => 'tar zxvf ava.tar.gz',
+command => 'tar zxvf java.tar.gz',
 path => '/bin',
 cwd => '/opt',
 refreshonly => 'true',

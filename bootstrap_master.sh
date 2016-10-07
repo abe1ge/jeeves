@@ -3,15 +3,19 @@
 # Updating VM
 sudo apt-get -y update
 
+echo "Box updated"  
+
 sudo apt-get -y install openssh-server openssh-client
 
-echo "Box updated and open ssh installed"
+echo "Open ssh installed"
 
 sudo ufw disable
 
+echo "Firewall disabled"
+
 sudo apt-get -y install puppet puppetmaster
 
-echo "Firewall disabled and puppet installed"
+echo "Puppet installed"
 
 fqdn=`facter fqdn`
 ip=`facter ipaddress_eth1`
@@ -33,6 +37,6 @@ sudo cp -r /tmp/shared/maven /usr/share/puppet/modules
 echo "Modules Copied"
 
 sudo echo "include javainstall" >> /etc/puppet/manifests/site.pp
-sudo echo "include maven" >> /etc/puppet/manifests/site.pp
+#sudo echo "include maven" >> /etc/puppet/manifests/site.pp
 
 echo "Site.pp updated"
