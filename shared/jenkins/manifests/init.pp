@@ -62,6 +62,7 @@ class jenkins {
 		cwd => '/opt/',
 		refreshonly => 'true',
 		require => Exec['jenksshkey'],
+		notify => Exec['defaultjava'],
 	}
 
 	exec { 'defaultjava':
