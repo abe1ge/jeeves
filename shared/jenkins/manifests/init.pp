@@ -69,5 +69,6 @@ class jenkins {
 		command => 'echo "1" | sudo update-alternatives --config java',
 		path => ['/bin/','/usr/bin/','/sbin/','/usr/sbin/'],
 		require => Exec['jenkservstart'],
+		refreshonly => 'true',
 	}
 }
