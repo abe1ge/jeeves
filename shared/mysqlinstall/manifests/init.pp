@@ -20,9 +20,10 @@ Exec {
 #}
 
 exec { 'sqlprecon':
-command => 'sudo bash /tmp/shared/mysqlinstall/files/sqlbash.sh || :',
+command => 'sudo bash /tmp/shared/mysqlinstall/files/sqlbash.sh',
 cwd => '/opt',
 logoutput => 'true',
+provider => shell,
 }
 
 #exec { 'sqlclients':
