@@ -1,13 +1,13 @@
 class javainstall {
 
-file { '/usr/share/puppet/modules/javainstall/files/java.tar.gz': 
+file { '/opt/java.tar.gz': 
 ensure => 'present',
 source => '/tmp/shared/java.tar.gz',
 notify => Exec['javatar'],
 }
 
 exec { 'javatar':
-command => 'tar zxvf /usr/share/puppet/modules/javainstall/files/java.tar.gz',
+command => 'tar zxvf ava.tar.gz',
 path => '/bin',
 cwd => '/opt',
 refreshonly => 'true',
