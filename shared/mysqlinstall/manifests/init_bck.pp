@@ -1,8 +1,11 @@
 class mysqlinstall {
-#
-#Exec {
-#	path => ["/usr/bin", "/bin", "/usr/sbin","/sbin"],
-#}
+
+require javainstall
+require maven
+
+Exec {
+	path => ["/usr/bin", "/bin", "/usr/sbin","/sbin"],
+}
 #
 #file { '/opt/mysql-server_5.7.15-1ubuntu14.04_amd64.deb-bundle.tar': 
 #ensure => 'present',
@@ -17,9 +20,10 @@ class mysqlinstall {
 #}
 
 exec { 'sqlprecon':
-command => 'sudo bash /tmp/shared/sqlbash.sh',
-logoutput => 'true',
-require => Exec['Extract sql'],
+command => 'sudo bash /tmp/shared/mysqlinstall/files/sqlbash.sh',
+cwd => '/opt',
+#logoutput => 'true',
+provider => shell,
 }
 
 #exec { 'sqlclients':
