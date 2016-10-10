@@ -1,5 +1,10 @@
 class mysqlinstall {
 
+#require javainstall
+#require maven
+#require git
+require jira
+
 Exec {
 	path => ["/usr/bin", "/bin", "/usr/sbin","/sbin"],
 }

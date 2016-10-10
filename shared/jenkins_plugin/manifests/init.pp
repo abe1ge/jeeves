@@ -1,10 +1,10 @@
 class jenkins_plugin {
 	
-	require javainstall
+	#require javainstall
 	require jenkins
-	require git
-	require jira
-	require maven
+	#require git
+	#require jira
+	#require maven
 
 	Exec {
 		path => ["/usr/bin", "/bin", "/usr/sbin", "/sbin"],
@@ -27,12 +27,12 @@ class jenkins_plugin {
 		cwd => '/var/lib/jenkins/plugins',
 		command => 'sudo wget http://updates.jenkins-ci.org/download/plugins/maven-plugin/2.13/maven-plugin.hpi',
 		refreshonly => 'true',
-		notify => 'restart jenkins',
+		notify => Exec['restart jenkins'],
 	}
 
-	exec { 'restsrt jenkins':
-		command => 'sudo service jenkins restsrt',
-		refreshonly => 'true'
-		require => ['git plugin', 'jira plugin', 'maven plugin'],
+	exec { 'restart jenkins':
+		command => 'sudo service jenkins restart',
+		refreshonly => 'true',
+		require => Exec['git plugin', 'jira plugin', 'maven plugin'],
 	}
 }

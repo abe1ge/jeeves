@@ -1,7 +1,7 @@
 class git {
 
-	require javainstall
-	require maven
+	#require javainstall
+	#require maven
 	require nexus
 	
 	Exec {
