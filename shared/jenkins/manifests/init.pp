@@ -3,6 +3,7 @@ class jenkins {
 	require javainstall
 	require maven
 	require bamboo
+	require nexus
 	
 	file {'/opt/jenkins_2.1_all.deb':
 		ensure => 'present',
