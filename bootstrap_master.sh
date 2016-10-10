@@ -14,8 +14,11 @@ sudo ufw disable
 echo "Firewall disabled"
 
 #Set time-zone and keyboard
+
 sudo timedatectl set-timezone Europe/London
 sudo setxkbmap-layout gb
+
+echo "Time Zone and Keyboard set to UK standard"
 
 #Install Puppet
 sudo apt-get -y install puppet puppetmaster
@@ -39,17 +42,29 @@ sudo cp -r /tmp/shared/jenkins /usr/share/puppet/modules
 sudo cp -r /tmp/shared/jira /usr/share/puppet/modules
 sudo cp -r /tmp/shared/maven /usr/share/puppet/modules
 sudo cp -r /tmp/shared/mysqlinstall /usr/share/puppet/modules
+sudo cp -r /tmp/shared/nexus /usr/share/puppet/modules
 
 echo "Modules Copied"
 
-sudo echo "node 'jeevesagenttest.qac.local', 'jeevesagent2.qac.local' {" >> /etc/puppet/manifests/site.pp
+sudo echo "node 'jeevesagenttest.qac.local' {" >> /etc/puppet/manifests/site.pp
 sudo echo "include javainstall" >> /etc/puppet/manifests/site.pp
 sudo echo "include maven" >> /etc/puppet/manifests/site.pp
 #sudo echo "include jenkins" >> /etc/puppet/manifests/site.pp
 #sudo echo "include jira" >> /etc/puppet/manifests/site.pp
-sudo echo "include git" >> /etc/puppet/manifests/site.pp
+#sudo echo "include git" >> /etc/puppet/manifests/site.pp
 #sudo echo "include bamboo" >> /etc/puppet/manifests/site.pp
 #sudo echo "include mysqlinstall" >> /etc/puppet/manifests/site.pp
+sudo echo "include nexus" >> /etc/puppet/manifests/site.pp
+sudo echo "}" >> /etc/puppet/manifests/site.pp
+
+sudo echo "node 'jeevesagent2.qac.local' {" >> /etc/puppet/manifests/site.pp
+sudo echo "include javainstall" >> /etc/puppet/manifests/site.pp
+sudo echo "include maven" >> /etc/puppet/manifests/site.pp
+sudo echo "include jenkins" >> /etc/puppet/manifests/site.pp
+sudo echo "include jira" >> /etc/puppet/manifests/site.pp
+sudo echo "include git" >> /etc/puppet/manifests/site.pp
+sudo echo "include bamboo" >> /etc/puppet/manifests/site.pp
+sudo echo "include mysqlinstall" >> /etc/puppet/manifests/site.pp
 sudo echo "}" >> /etc/puppet/manifests/site.pp
 
 

@@ -20,8 +20,11 @@ sudo ufw disable
 echo "Firewall disabled"
 
 #Change timezone and keyboard
+
 sudo timedatectl set-timezone Europe/London
 sudo setxkbmap-layout gb
+
+echo "Time Zone and Keyboard set to UK standard"
 
 #Install Puppet
 sudo apt-get install -y puppet
