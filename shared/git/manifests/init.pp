@@ -7,8 +7,14 @@ class git {
 		path => [ "/usr/bin", "/bin", "/usr/sbin"],
 	}  	
 
-	exec { 'install':
+	package { 'git':
+	ensure => 'present',
+	notify => Exec['gitinst'],
+	}
+	
+	exec { 'gitinst':
 	cwd => '/opt',
-	command => 'sudo apt-get install git -y'
+	command => 'sudo apt-get install git -y',
+	refreshonly => true,
 	}
 }
