@@ -43,6 +43,7 @@ sudo cp -r /tmp/shared/jira /usr/share/puppet/modules
 sudo cp -r /tmp/shared/maven /usr/share/puppet/modules
 sudo cp -r /tmp/shared/mysqlinstall /usr/share/puppet/modules
 sudo cp -r /tmp/shared/nexus /usr/share/puppet/modules
+sudo cp -r /tmp/shared/jenkins_plugin /usr/share/puppet/modules
 
 echo "Modules Copied"
 
@@ -55,6 +56,7 @@ sudo echo "include jira" >> /etc/puppet/manifests/site.pp
 sudo echo "include bamboo" >> /etc/puppet/manifests/site.pp
 sudo echo "include mysqlinstall" >> /etc/puppet/manifests/site.pp
 sudo echo "include jenkins" >> /etc/puppet/manifests/site.pp
+sudo echo "include jenkins_plugin" >> /etc/puppet/manifests/site.pp
 sudo echo "}" >> /etc/puppet/manifests/site.pp
 
 echo "Site.pp updated"
