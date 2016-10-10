@@ -23,7 +23,7 @@ echo "Firewall disabled"
 #Change timezone and keyboard
 
 sudo timedatectl set-timezone Europe/London
-setxkbmap -layout gb
+setxkbmap gb
 
 echo "Time Zone and Keyboard set to UK standard"
 
