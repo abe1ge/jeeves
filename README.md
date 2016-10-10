@@ -12,7 +12,7 @@ Testing the modules:
 	In the terminal, type "mvn -version"
 	
 	Git:
-	In the terminal, type "git -version"
+	In the terminal, type "git --version"
 	
 	MySQL
 	In the terminal, type "mysql -V"
