@@ -1,5 +1,6 @@
 # jeeves
 Step 1: Ensure the installation files are in the top of the "shared" folder. They do not need to be in a specific folder.
+
 Step 2: vagrant up
 
 Testing the modules:
@@ -8,10 +9,13 @@ Testing the modules:
 	In the terminal, type "java -version"
 	
 	Maven:
-	In the terminal, type "mvn --version"
+	In the terminal, type "mvn -version"
 	
 	Git:
-	In the terminal, type "git -version"
+	In the terminal, type "git --version"
+	
+	MySQL
+	In the terminal, type "mysql -V"
 	
 	Jenkins
 	Open Firefox
@@ -29,5 +33,4 @@ Testing the modules:
 	Open Firefox
 	In the url bar, enter "localhost:8081"
 	
-	MySQL
-	In the terminal, type "mysql -V"
+	
