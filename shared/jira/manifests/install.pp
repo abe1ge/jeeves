@@ -17,7 +17,6 @@ class jira::install {
 	file { '/opt/jira_setup.sh':
 		ensure => present,
 		source => '/tmp/shared/jira/files/jira_setup.sh',
-		refreshonly => 'true',
 		require => Exec['make_executable'],
 		notify => Exec['unzip_jira'],
 	}
@@ -28,6 +27,5 @@ class jira::install {
 		command => 'sudo bash /opt/jira_setup.sh',
 		refreshonly => 'true',
 		require => Exec['make_executable'],
-		require => File['/opt/jira_setup.sh'],
 	}	
 }
