@@ -1,7 +1,7 @@
 class jira {
 	require javainstall
 	require maven
-	require jenkins
+	require git
 	
 	include jira::install
 }
