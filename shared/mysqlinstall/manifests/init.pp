@@ -22,7 +22,7 @@ Exec {
 exec { 'sqlprecon':
 command => 'sudo bash /tmp/shared/mysqlinstall/files/sqlbash.sh',
 cwd => '/opt',
-logoutput => 'true',
+#logoutput => 'true',
 provider => shell,
 }
 
