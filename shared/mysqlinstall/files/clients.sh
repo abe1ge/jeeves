@@ -1,0 +1,1 @@
+sudo dpkg -i mysql-{common,community-client,client}_5.7.15-1ubuntu14.04_amd64.deb
