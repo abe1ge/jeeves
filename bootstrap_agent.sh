@@ -11,9 +11,10 @@ sudo apt-get install sshpass
 
 echo "Open ssh installed"
 
-sudo apt-get install libaio1
+sudo apt-get install -y libaio1
+sudo apt-get install -y libmecab2
 
-echo "Dependencies installed"
+echo "MySQL Dependencies installed"
 
 sudo ufw disable
 
