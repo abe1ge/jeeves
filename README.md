@@ -17,6 +17,9 @@ Testing the modules:
 	MySQL
 	In the terminal, type "mysql -V"
 	
+	Zabbix
+	In the terminal, type "zabbix_agentd -V"
+	
 	Jenkins
 	Open Firefox
 	In the url bar, enter "localhost:8080"
