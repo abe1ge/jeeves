@@ -92,4 +92,4 @@ echo "Puppet agent has linked to master server and applied the puppet modules"
 
 #Returning the total time to provision the box
 duration2=$SECONDS
-echo "$(($duration2 / 60)) minute(s) and $(($duration2 % 60)) seconds elapsed."
+echo "$(($duration2 / 60)) minute(s) and $(($duration2 % 60)) second(s) elapsed."
