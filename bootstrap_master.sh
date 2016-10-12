@@ -26,10 +26,10 @@ sudo apt-get -y install puppet puppetmaster
 echo "Puppet installed"
 
 #Getting master fqdn and ip
-fqdn=`facter fqdn`
-ip=`facter ipaddress_eth1`
+mfqdn=`facter fqdn`
+mip=`facter ipaddress_eth1`
 
-# Check if mip or mfqdn files exist and deleting them if they do
+# Check if mip or mfqdn files exist and deleting them if they do (this is mainly for testing runs)
 if [ -e /tmp/shared/mfqdn.file ]
 then
 	sudo rm /tmp/shared/mfqdn.file
@@ -41,12 +41,14 @@ then
 fi
 
 #Saving the ip and fqdn of the master
-echo 'mfqdn="'"$fqdn"'"' >> /tmp/shared/mfqdn.file
-echo 'mip="'"$ip"'"' >> /tmp/shared/mip.file
+echo 'mfqdn="'"$mfqdn"'"' >> /tmp/shared/mfqdn.file
+echo 'mip="'"$mip"'"' >> /tmp/shared/mip.file
+
+echo "The master ip is $mip and its' FQDN is $mfqdn"
 
 #Updating the hosts file
-sed -i "1i127.0.0.1	$fqdn	puppetmaster" /etc/hosts
-sed -i "2i$ip	$fqdn	puppetmaster" /etc/hosts
+sed -i "1i127.0.0.1	$mfqdn	puppetmaster" /etc/hosts
+sed -i "2i$mip	$mfqdn	puppetmaster" /etc/hosts
 
 echo "Hosts file updated"
 
@@ -67,7 +69,7 @@ sudo cp -r /tmp/shared/zabbix /usr/share/puppet/modules
 echo "Modules Copied"
 
 #Updating Site.pp so puppet provisions the correct modules for each agent
-sudo echo "node 'jeevesagent1.qac.local','jeevesagent2.qac.local','jeevesagent3.qac.local','jeevesagent4.qac.local' {" >> /etc/puppet/manifests/site.pp
+sudo echo "node 'default' {" >> /etc/puppet/manifests/site.pp
 sudo echo "include javainstall" >> /etc/puppet/manifests/site.pp
 sudo echo "include maven" >> /etc/puppet/manifests/site.pp
 sudo echo "include nexus" >> /etc/puppet/manifests/site.pp
@@ -78,9 +80,9 @@ sudo echo "include mysqlinstall" >> /etc/puppet/manifests/site.pp
 sudo echo "include jenkins" >> /etc/puppet/manifests/site.pp
 sudo echo "include zabbix" >> /etc/puppet/manifests/site.pp
 sudo echo "}" >> /etc/puppet/manifests/site.pp
-sudo echo "" >> /etc/puppet/manifests/site.pp
-sudo echo "node 'default' {" >> /etc/puppet/manifests/site.pp
-sudo echo "}" >> /etc/puppet/manifests/site.pp
+# sudo echo "" >> /etc/puppet/manifests/site.pp
+# sudo echo "node 'default' {" >> /etc/puppet/manifests/site.pp
+# sudo echo "}" >> /etc/puppet/manifests/site.pp
 
 echo "Site.pp updated"
 

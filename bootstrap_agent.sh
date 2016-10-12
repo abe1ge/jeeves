@@ -33,6 +33,10 @@ sudo apt-get install -y puppet
 
 echo "Puppet installed"
 
+#mfqdn="jeevesmaster.qac.local"
+#mip="192.168.1.80"
+
+
 #Getting the ip and fqdn from of the master from the file the master 
 #bootstrap saved and saving them as $mip and $mfqdn respectively
 . /tmp/shared/mfqdn.file
