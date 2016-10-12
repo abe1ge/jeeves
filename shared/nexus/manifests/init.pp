@@ -1,7 +1,7 @@
 class nexus {
 	
 	require javainstall
-	#require maven 
+	require maven 
 	
 	#include nexus::install
 	#include nexus::config
