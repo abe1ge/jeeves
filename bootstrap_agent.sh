@@ -46,6 +46,9 @@ sed -i "2iserver=$mfqdn" /etc/puppet/puppet.conf
 
 echo "Hosts file updated"
 
+duration1=$SECONDS
+echo "$(($duration1 / 60)) minute(s) and $(($duration1 % 60)) second(s) elapsed."
+
 sudo puppet agent --test --server="$mfqdn"
 
 sshpass -p "vagrant" ssh -o StrictHostKeyChecking=no vagrant@"$mip" << EOF
@@ -70,3 +73,6 @@ echo "Puppet agent enabled"
 sudo puppet agent --test --server="$mfqdn"
 
 echo "Puppet agent has linked to master server and applied the puppet modules"
+
+duration2=$SECONDS
+echo "$(($duration2 / 60)) minute(s) and $(($duration2 % 60)) seconds elapsed."

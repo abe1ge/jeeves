@@ -63,3 +63,6 @@ sudo echo "node 'default' {" >> /etc/puppet/manifests/site.pp
 sudo echo "}" >> /etc/puppet/manifests/site.pp
 
 echo "Site.pp updated"
+
+duration=$SECONDS
+echo "$(($duration / 60)) minute(s) and $(($duration % 60)) second(s) elapsed."
