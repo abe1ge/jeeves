@@ -47,7 +47,7 @@ sudo cp -r /tmp/shared/zabbix /usr/share/puppet/modules
 
 echo "Modules Copied"
 
-sudo echo "node 'jeevesagent4.qac.local' {" >> /etc/puppet/manifests/site.pp
+sudo echo "node 'jeevesagent1.qac.local','jeevesagent2.qac.local','jeevesagent3.qac.local','jeevesagent4.qac.local' {" >> /etc/puppet/manifests/site.pp
 sudo echo "include javainstall" >> /etc/puppet/manifests/site.pp
 sudo echo "include maven" >> /etc/puppet/manifests/site.pp
 sudo echo "include nexus" >> /etc/puppet/manifests/site.pp
