@@ -1,8 +1,8 @@
 class bamboo {
 
-	#require javainstall
+	require javainstall
 	#require maven
-	require git
+	#require git
 	
 	Exec {
 		path => ["/usr/bin", "/bin", "/usr/sbin","/sbin"],

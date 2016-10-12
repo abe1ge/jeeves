@@ -16,7 +16,7 @@
 		master.vm.box = "chad-thompson/ubuntu-trusty64-gui"
 	
 		# Setting up the network options
-		master.vm.network :public_network, :public_network=> "wlan0",ip:"192.168.1.73"
+		master.vm.network :public_network, :public_network=> "wlan0",ip:"192.168.1.80"
 		
 		# Calling the provision bash file
 		master.vm.provision:shell,path:"bootstrap_master.sh"

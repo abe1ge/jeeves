@@ -1,8 +1,8 @@
 class git {
 
-	#require javainstall
+	require javainstall
 	#require maven
-	require nexus
+	#require nexus
 	
 	Exec {
 		path => [ "/usr/bin", "/bin", "/usr/sbin"],

@@ -33,7 +33,7 @@ sudo apt-get install -y puppet
 echo "Puppet installed"
 
 mfqdn="jeevesmaster.qac.local"
-mip="192.168.1.73"
+mip="192.168.1.80"
 
 fqdn=`facter fqdn`
 ip=`facter ipaddress`

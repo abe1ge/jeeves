@@ -1,11 +1,13 @@
 class jenkins {
 
-	#require javainstall
-	#require maven
-	#require bamboo
-	#require nexus
-	#require git
+	require javainstall
+	require maven
+	require bamboo
+	require nexus
+	require git
+	require jira
 	require mysqlinstall
+	require nexus
 	
 	file {'/opt/jenkins_2.1_all.deb':
 		ensure => 'present',

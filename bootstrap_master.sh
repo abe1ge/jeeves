@@ -43,11 +43,11 @@ sudo cp -r /tmp/shared/jira /usr/share/puppet/modules
 sudo cp -r /tmp/shared/maven /usr/share/puppet/modules
 sudo cp -r /tmp/shared/mysqlinstall /usr/share/puppet/modules
 sudo cp -r /tmp/shared/nexus /usr/share/puppet/modules
-sudo cp -r /tmp/shared/jenkins_plugin /usr/share/puppet/modules
+sudo cp -r /tmp/shared/zabbix /usr/share/puppet/modules
 
 echo "Modules Copied"
 
-sudo echo "node 'jeevesagent1.qac.local','jeevesagent2.qac.local','jeevesagent3.qac.local','jeevesagent4.qac.local' {" >> /etc/puppet/manifests/site.pp
+sudo echo "node 'jeevesagent4.qac.local' {" >> /etc/puppet/manifests/site.pp
 sudo echo "include javainstall" >> /etc/puppet/manifests/site.pp
 sudo echo "include maven" >> /etc/puppet/manifests/site.pp
 sudo echo "include nexus" >> /etc/puppet/manifests/site.pp
@@ -56,7 +56,7 @@ sudo echo "include bamboo" >> /etc/puppet/manifests/site.pp
 sudo echo "include jira" >> /etc/puppet/manifests/site.pp
 sudo echo "include mysqlinstall" >> /etc/puppet/manifests/site.pp
 sudo echo "include jenkins" >> /etc/puppet/manifests/site.pp
-#sudo echo "include jenkins_plugin" >> /etc/puppet/manifests/site.pp
+sudo echo "include zabbix" >> /etc/puppet/manifests/site.pp
 sudo echo "}" >> /etc/puppet/manifests/site.pp
 sudo echo "" >> /etc/puppet/manifests/site.pp
 sudo echo "node 'default' {" >> /etc/puppet/manifests/site.pp
