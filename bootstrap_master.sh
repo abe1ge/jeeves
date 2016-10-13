@@ -25,6 +25,8 @@ sudo apt-get -y install puppet puppetmaster
 
 echo "Puppet installed"
 
+sleep 10
+
 #Getting master fqdn and ip
 mfqdn=`facter fqdn`
 mip=`facter ipaddress_eth1`

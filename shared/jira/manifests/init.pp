@@ -29,7 +29,7 @@ class jira {
 		unless => 'grep -rnw "/opt/atlassian/jira" -e "install"',
 		path => ['/bin','/usr/bin'],
 		cwd => '/opt',
-		command => 'sudo jira.bin -q response.varfile',
+		command => 'sudo ./jira.bin -q response.varfile',
 		refreshonly => 'true',
 		require => Exec['make_executable'],
 		timeout => '600',
