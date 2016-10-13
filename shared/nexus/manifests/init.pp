@@ -6,7 +6,7 @@ class nexus {
 	#include nexus::install
 	#include nexus::config
 	
-	$NEXUS_HOME = '/opt/nexus'
+	
 	$runnew = 'run_as_user="vagrant"'
 	$runold = 'run_as_user=""'
 	
@@ -32,27 +32,27 @@ class nexus {
 		cwd => '/opt/',
 		command => "sudo ln -s nexus-3.0.2-02 nexus",
 		refreshonly => true,
-		notify => Exec ['runnexuser'],
+		notify => Exec['runnexuser'],
 	}
 	
 		exec { 'runnexuser':
 		cwd => '/opt/nexus/bin/',
 		command => "sed -i -e 's/${runold}/$runnew$/g' nexus.rc",
 		refreshonly => true,
-		notify => Exec ['otherlinknex'],
+		notify => Exec['otherlinknex'],
 	}
 
 	exec { 'otherlinknex':
 		cwd => "/",
 		command => 'sudo ln -s /opt/nexus/bin/nexus /etc/init.d/nexus',
-		notify => Exec ['setdefaultnex'],
+		notify => Exec['setdefaultnex'],
 		refreshonly => true,
 	}
 
 	exec { 'setdefaultnex':
 		cwd => '/etc/init.d',
 		command => 'sudo update-rc.d nexus defaults', 
-		notify => Exec ['startnexus'],
+		notify => Exec['startnexus'],
 		refreshonly => true,
 	}
 

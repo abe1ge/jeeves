@@ -9,7 +9,7 @@ class maven {
 	file { '/opt/maven.tar.gz':
 		ensure => 'present',
 		source => '/tmp/shared/maven.tar.gz',
-		notify => Exec ['extract maven'],
+		notify => Exec['extract maven'],
 	}
 
 	exec { 'extract maven':
@@ -17,7 +17,7 @@ class maven {
 		command => 'sudo tar -zxvf maven.tar.gz',
 		require => File['/opt/maven.tar.gz'],
 		refreshonly => true,
-		notify => Exec ['install maven'],
+		notify => Exec['install maven'],
 	}
 
 	exec { 'install maven':

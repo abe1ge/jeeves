@@ -75,7 +75,17 @@ echo "Hosts file updated"
 duration1=$SECONDS
 echo "$(($duration1 / 60)) minute(s) and $(($duration1 % 60)) second(s) elapsed."
 
-sudo puppet agent --test --server="$mfqdn"
+sudo apt-get install curl -y
+
+sudo wget https://apt.puppetlabs.com/puppetlabs-release-trusty.deb
+
+sudo dpkg -i puppetlabs-release-trusty.deb
+
+sudo apt-get update
+
+curl -k https://jeevesmaster.qac.local:8140/packages/current/install.bash | sudo bash
+
+sudo puppet agent --enable
 
 #SSH into master to approve puppet certificate
 sshpass -p "vagrant" ssh -o StrictHostKeyChecking=no vagrant@"$mip" << EOF
@@ -87,18 +97,18 @@ EOF
 echo " Puppet certificate signed"
 
 #Restarting puppet service
-sudo service puppet stop
-sudo service puppet start
+#sudo service puppet stop
+#sudo service puppet start
 
-echo "Puppet service restarted"
+#echo "Puppet service restarted"
 
 #Pause to allow puppet service to restart fully
-sleep 3
+#sleep 3
 
 #Enable puppet agent
-sudo puppet agent --enable
+#sudo puppet agent --enable
 
-echo "Puppet agent enabled"
+#echo "Puppet agent enabled"
 
 #Contacting puppet master and provisioning the modules
 sudo puppet agent --test --server="$mfqdn"

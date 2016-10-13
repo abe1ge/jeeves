@@ -21,14 +21,23 @@ sudo timedatectl set-timezone Europe/London
 echo "Time-Zone set to UK standard"
 
 #Install Puppet
-sudo apt-get -y install puppet puppetmaster
+sudo cp /tmp/shared/puppet-enterprise-2015.2.0-ubuntu-14.04-amd64.tar.gz /opt
+cd /opt
+sudo tar -zxvf /opt/puppet-enterprise-2015.2.0-ubuntu-14.04-amd64.tar.gz
+sudo cp /tmp/shared/answers.install /opt/puppet-enterprise-2015.2.0-ubuntu-14.04-amd64/answers
+sudo wget https://apt.puppetlabs.com/puppetlabs-release-trusty.deb
+sudo dpkg -i puppetlabs-release-trusty.deb
+sudo apt-get update
+
+sudo /opt/puppet-enterprise-2015.2.0-ubuntu-14.04-amd64/puppet-enterprise-installer -A /opt/puppet-enterprise-2015.2.0-ubuntu-14.04-amd64/answers/answers.install
+
 
 echo "Puppet installed"
 
 #Forcing an ip to account for network weirdness
 sudo ifdown eth1
 sudo ifup eth1
-sudo ifconfig eth1 192.168.1.135
+sudo ifconfig eth1 192.168.1.124
 
 echo "Forced ip to account for the network being weird"
 
@@ -60,36 +69,35 @@ sed -i "2i$mip	$mfqdn	puppetmaster" /etc/hosts
 echo "Hosts file updated"
 
 #Creating Site.pp
-sudo touch /etc/puppet/manifests/site.pp
+sudo touch /etc/puppetlabs/code/environments/production/manifests/site.pp
 
-#Copying module directories to a default path
-sudo cp -r /tmp/shared/bamboo /usr/share/puppet/modules
-sudo cp -r /tmp/shared/git /usr/share/puppet/modules
-sudo cp -r /tmp/shared/javainstall /usr/share/puppet/modules
-sudo cp -r /tmp/shared/jenkins /usr/share/puppet/modules
-sudo cp -r /tmp/shared/jira /usr/share/puppet/modules
-sudo cp -r /tmp/shared/maven /usr/share/puppet/modules
-sudo cp -r /tmp/shared/mysqlinstall /usr/share/puppet/modules
-sudo cp -r /tmp/shared/nexus /usr/share/puppet/modules
-sudo cp -r /tmp/shared/zabbix /usr/share/puppet/modules
+sudo cp -r /tmp/shared/bamboo /etc/puppetlabs/code/environments/production/modules
+sudo cp -r /tmp/shared/git /etc/puppetlabs/code/environments/production/modules
+sudo cp -r /tmp/shared/javainstall /etc/puppetlabs/code/environments/production/modules
+sudo cp -r /tmp/shared/jenkins /etc/puppetlabs/code/environments/production/modules
+sudo cp -r /tmp/shared/jira /etc/puppetlabs/code/environments/production/modules
+sudo cp -r /tmp/shared/maven /etc/puppetlabs/code/environments/production/modules
+sudo cp -r /tmp/shared/mysqlinstall /etc/puppetlabs/code/environments/production/modules
+sudo cp -r /tmp/shared/nexus /etc/puppetlabs/code/environments/production/modules
+sudo cp -r /tmp/shared/jenkins_plugin /etc/puppetlabs/code/environments/production/modules
+sudo cp -r /tmp/shared/zabbix /etc/puppetlabs/code/environments/production/modules
 
 echo "Modules Copied"
 
-#Updating Site.pp so puppet provisions the correct modules for each agent
-sudo echo "node 'default' {" >> /etc/puppet/manifests/site.pp
-sudo echo "include javainstall" >> /etc/puppet/manifests/site.pp
-sudo echo "include maven" >> /etc/puppet/manifests/site.pp
-sudo echo "include nexus" >> /etc/puppet/manifests/site.pp
-sudo echo "include git" >> /etc/puppet/manifests/site.pp
-sudo echo "include bamboo" >> /etc/puppet/manifests/site.pp
-sudo echo "include jira" >> /etc/puppet/manifests/site.pp
-sudo echo "include mysqlinstall" >> /etc/puppet/manifests/site.pp
-sudo echo "include jenkins" >> /etc/puppet/manifests/site.pp
-sudo echo "include zabbix" >> /etc/puppet/manifests/site.pp
-sudo echo "}" >> /etc/puppet/manifests/site.pp
-# sudo echo "" >> /etc/puppet/manifests/site.pp
-# sudo echo "node 'default' {" >> /etc/puppet/manifests/site.pp
-# sudo echo "}" >> /etc/puppet/manifests/site.pp
+sudo echo "node 'jeevesagent1.qac.local','jeevesagent2.qac.local','jeevesagent3.qac.local','jeevesagent4.qac.local' {" >> /etc/puppetlabs/code/environments/production/manifests/site.pp
+sudo echo "include javainstall" >> /etc/puppetlabs/code/environments/production/manifests/site.pp
+sudo echo "include maven" >> /etc/puppetlabs/code/environments/production/manifests/site.pp
+sudo echo "include nexus" >> /etc/puppetlabs/code/environments/production/manifests/site.pp
+sudo echo "include git" >> /etc/puppetlabs/code/environments/production/manifests/site.pp
+sudo echo "include bamboo" >> /etc/puppetlabs/code/environments/production/manifests/site.pp
+sudo echo "include jira" >> /etc/puppetlabs/code/environments/production/manifests/site.pp
+sudo echo "include mysqlinstall" >> /etc/puppetlabs/code/environments/production/manifests/site.pp
+sudo echo "include jenkins" >> /etc/puppetlabs/code/environments/production/manifests/site.pp
+sudo echo "include zabbix" >> /etc/puppetlabs/code/environments/production/manifests/site.pp
+#sudo echo "include jenkins_plugin" >> /etc/puppetlabs/code/environments/production/manifests/site.pp
+sudo echo "}" >> /etc/puppetlabs/code/environments/production/manifests/site.pp
+sudo echo "" >> /etc/puppetlabs/code/environments/production/manifests/site.pp
+
 
 echo "Site.pp updated"
 
