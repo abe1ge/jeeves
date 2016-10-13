@@ -1,5 +1,6 @@
 class jira {
-	require javainstall
+
+	#require javainstall
 	require maven
 	#require git
 	#require bamboo

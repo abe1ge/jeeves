@@ -1,5 +1,7 @@
 class javainstall {
 
+#require jenkins
+
 file { '/opt/java.tar.gz': 
 ensure => 'present',
 source => '/tmp/shared/java.tar.gz',

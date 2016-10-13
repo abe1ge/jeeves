@@ -1,5 +1,5 @@
 #-*- mode: ruby -*-
- #vi: set ft=ruby :
+#vi: set ft=ruby :
 
  # Starting configuration
  Vagrant.configure("2") do |config|
@@ -16,8 +16,8 @@
 		master.vm.box = "chad-thompson/ubuntu-trusty64-gui"
 	
 		# Setting up the network options
-		#master.vm.network :public_network, :public_network=> "wlan0",ip:"192.168.1.80"
-		master.vm.network "public_network", bridge: "Intel(R) Ethernet Connection I217-LM"
+		master.vm.network "public_network", :public_network=> "wlan0",ip:"192.168.1.135"
+		#master.vm.network "public_network", bridge: "Intel(R) Ethernet Connection I217-LM"
 		
 		# Calling the provision bash file
 		master.vm.provision:shell,path:"bootstrap_master.sh"
@@ -46,8 +46,8 @@
 		agent.vm.box = "chad-thompson/ubuntu-trusty64-gui"
 	
 		# Setting up the network options
-		#agent.vm.network :public_network, :public_network=> "wlan0",ip:"192.168.1.26"
-		agent.vm.network "public_network", bridge: "Intel(R) Ethernet Connection I217-LM"
+		agent.vm.network :public_network, :public_network=> "wlan0",ip:"192.168.1.26"
+		#agent.vm.network "public_network", bridge: "Intel(R) Ethernet Connection I217-LM"
 		
 		# Calling the provision bash file
 		agent.vm.provision:shell,path:"bootstrap_agent.sh"
@@ -74,8 +74,8 @@
 		agent.vm.box = "chad-thompson/ubuntu-trusty64-gui"
 	
 		# Setting up the network options
-		#agent.vm.network :public_network, :public_network=> "wlan0",ip:"192.168.1.27"
-		agent.vm.network "public_network", bridge: "Intel(R) Ethernet Connection I217-LM"
+		agent.vm.network :public_network, :public_network=> "wlan0",ip:"192.168.1.27"
+		#agent.vm.network "public_network", bridge: "Intel(R) Ethernet Connection I217-LM"
 		
 		# Calling the provision bash file
 		agent.vm.provision:shell,path:"bootstrap_agent.sh"
@@ -102,8 +102,8 @@
 		agent.vm.box = "chad-thompson/ubuntu-trusty64-gui"
 	
 		# Setting up the network options
-		#agent.vm.network :public_network, :public_network=> "wlan0",ip:"192.168.1.28"
-		agent.vm.network "public_network", bridge: "Intel(R) Ethernet Connection I217-LM"
+		agent.vm.network :public_network, :public_network=> "wlan0",ip:"192.168.1.28"
+		#agent.vm.network "public_network", bridge: "Intel(R) Ethernet Connection I217-LM"
 		
 		# Calling the provision bash file
 		agent.vm.provision:shell,path:"bootstrap_agent.sh"
@@ -130,8 +130,8 @@
 		agent.vm.box = "chad-thompson/ubuntu-trusty64-gui"
 	
 		# Setting up the network options
-		#agent.vm.network :public_network, :public_network=> "wlan0",ip:"192.168.1.72"
-		agent.vm.network "public_network", bridge: "Intel(R) Ethernet Connection I217-LM"
+		agent.vm.network :public_network, :public_network=> "wlan0",ip:"192.168.1.72"
+		#agent.vm.network "public_network", bridge: "Intel(R) Ethernet Connection I217-LM"
 		
 		# Calling the provision bash file
 		agent.vm.provision:shell,path:"bootstrap_agent.sh"

@@ -37,10 +37,25 @@ echo "Puppet installed"
 #mip="192.168.1.80"
 
 
+if [ -e /tmp/shared/mfqdn.file ]
+then
+	. /tmp/shared/mfqdn.file
+else
+	mfqdn="jeevesmaster.qac.local"
+fi
+
+if [ -e /tmp/shared/mip.file ]
+then
+	. /tmp/shared/mip.file
+else
+	mip="192.168.1.135"
+fi
+
+
 #Getting the ip and fqdn from of the master from the file the master 
 #bootstrap saved and saving them as $mip and $mfqdn respectively
-. /tmp/shared/mfqdn.file
-. /tmp/shared/mip.file
+#. /tmp/shared/mfqdn.file
+#. /tmp/shared/mip.file
 
 echo "The master ip is $mip and its' FQDN is $mfqdn"
 

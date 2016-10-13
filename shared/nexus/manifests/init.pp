@@ -1,6 +1,6 @@
 class nexus {
 	
-	require javainstall
+	#require javainstall
 	require maven 
 	
 	#include nexus::install
