@@ -25,6 +25,13 @@ sudo apt-get -y install puppet puppetmaster
 
 echo "Puppet installed"
 
+#Forcing an ip to account for network weirdness
+sudo ifdown eth1
+sudo ifup eth1
+sudo ifconfig eth1 192.168.1.135
+
+echo "Forced ip to account for the network being weird"
+
 #Getting master fqdn and ip
 mfqdn=`facter fqdn`
 mip=`facter ipaddress_eth1`
