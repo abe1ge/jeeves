@@ -25,24 +25,30 @@ sudo apt-get -y install puppet puppetmaster
 
 echo "Puppet installed"
 
-#Forcing an ip to account for network weirdness
-sudo ifdown eth1
-sudo ifup eth1
-sudo ifconfig eth1 192.168.1.135
-
-echo "Forced ip to account for the network being weird"
-
 #Getting master fqdn and ip
 mfqdn=`facter fqdn`
 mip=`facter ipaddress_eth1`
 
+if [ -z "$mip" ];
+then
+#Forcing an ip to account for network weirdness
+sudo ifdown eth1
+sudo ifup eth1
+#sudo ifconfig eth1 192.168.1.113
+
+echo "Forced ip to account for the network being weird"
+
+mip=`facter ipaddress_eth1`
+
+fi
+
 # Check if mip or mfqdn files exist and deleting them if they do (this is mainly for testing runs)
-if [ -e /tmp/shared/mfqdn.file ]
+if [ -e /tmp/shared/mfqdn.file ];
 then
 	sudo rm /tmp/shared/mfqdn.file
 fi
 
-if [ -e /tmp/shared/mip.file ]
+if [ -e /tmp/shared/mip.file ];
 then
 	sudo rm /tmp/shared/mip.file
 fi
