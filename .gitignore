@@ -10,5 +10,4 @@ shared/nexus-3.0.2-02-unix.tar.gz
 shared/zabbix_appliance_3.2.0_x86_64.iso
 shared/zabbix_agents_3.2.0.linux2_6_23.amd64.tar.gz
 *.vagrant/*
-shared/puppet-enterprise-2015.2.0-ubuntu-14.04-amd64.tar.gz
 

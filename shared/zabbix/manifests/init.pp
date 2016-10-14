@@ -58,18 +58,11 @@ class zabbix {
 	}
 	
 	
-	exec {'chmodzab':
-		command => 'chmod a+x zabbix_agentd',
-		path => ['/bin/','/usr/bin/','/sbin/','/user/bin/'],
-		cwd => '/sbin',
+	exec { 'zabinst':
+		command => 'zabbix_agentd',
+		path => '/opt/zabbix_3.2.0/sbin/',
 		refreshonly => 'true',
 		subscribe => File['/sbin/zabbix_agentd','/bin/zabbix_sender','/bin/zabbix_get','/usr/local/etc/zabbix_agentd.conf'],
 	}
 	
-	exec { 'zabinst':
-		command => 'zabbix_agentd',
-		path => '/sbin/',
-		refreshonly => 'true',
-		subscribe => Exec['chmodzab'],
-	}
-}​
+}
