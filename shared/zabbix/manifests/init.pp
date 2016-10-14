@@ -57,12 +57,19 @@ class zabbix {
 		require => Exec['unzipzabbix'],
 	}
 	
-	
-	exec { 'zabinst':
-		command => '/sbin/zabbix_agentd',
-		path => '/sbin/',
+	exec {'chmodzab':
+		command => 'chmod a+x zabbix_agentd',
+		path => ['/bin/','/usr/bin/','/sbin/','/user/bin/'],
+		cwd => '/sbin',
 		refreshonly => 'true',
 		subscribe => File['/sbin/zabbix_agentd','/bin/zabbix_sender','/bin/zabbix_get','/usr/local/etc/zabbix_agentd.conf'],
+	}
+	
+	exec { 'zabinst':
+		command => 'zabbix_agentd',
+		path => '/sbin/',
+		refreshonly => 'true',
+		subscribe => Exec['chmodzab'],
 	}
 	
 }
