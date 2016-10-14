@@ -8,7 +8,6 @@ class jenkins {
 	 require jira
 	 require mysqlinstall
 	 require nexus
-	 require zabbix
 	
 	#before javainstall
 	

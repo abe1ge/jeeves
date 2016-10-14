@@ -1,7 +1,7 @@
 class zabbix { 
 	
 	require javainstall
-	#require maven
+	require maven
 	
 	group {'zabbix':
 	ensure => 'present',
@@ -59,8 +59,8 @@ class zabbix {
 	
 	
 	exec { 'zabinst':
-		command => 'zabbix_agentd',
-		path => '/opt/zabbix_3.2.0/sbin/',
+		command => '/sbin/zabbix_agentd',
+		path => '/sbin/',
 		refreshonly => 'true',
 		subscribe => File['/sbin/zabbix_agentd','/bin/zabbix_sender','/bin/zabbix_get','/usr/local/etc/zabbix_agentd.conf'],
 	}
